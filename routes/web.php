@@ -21,5 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware' => ['tanant', 'auth']], function () {
+    Route::get('/projects', 'DashboardController@index');
+    Route::post('/projects', 'DashboardController@storeProject')->name('projects.store');
+
     Route::get('/{company}', 'DashboardController@index');
 });

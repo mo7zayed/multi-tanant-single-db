@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Tanant\Manager;
+use App\Tanant\Observers\TanantObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(Manager::class, function () {
             return new Manager;
+        });
+
+        $this->app->singleton(TanantObserver::class, function () {
+            return new TanantObserver(app(Manager::class)->getTanant());
         });
     }
 }

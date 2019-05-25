@@ -18,6 +18,8 @@
                     </div>
                 </div>
             </div>
+
+            @include('tanant._create')
         </div>
     </div>
 @endsection

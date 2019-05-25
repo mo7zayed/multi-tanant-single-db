@@ -14,4 +14,16 @@ class DashboardController extends Controller
             'projects' => Project::all(),
         ]);
     }
+
+    public function storeProject(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        Project::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/projects');
+    }
 }

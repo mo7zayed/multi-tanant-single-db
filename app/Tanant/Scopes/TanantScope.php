@@ -30,6 +30,6 @@ class TanantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        return $builder->where('company_id', $this->tanant->id);
+        return $builder->where($this->tanant->getForeignKey(), $this->tanant->id);
     }
 }

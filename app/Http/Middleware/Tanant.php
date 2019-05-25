@@ -18,7 +18,7 @@ class Tanant
     public function handle($request, Closure $next)
     {
 
-        $tanant = $this->resolveTanant($request->company);
+        $tanant = $this->resolveTanant($request->company ?: session('tanant'));
 
         if (!($tanant && auth()->user()->companies->contains('id', $tanant->id))) {
             return redirect('/home');
